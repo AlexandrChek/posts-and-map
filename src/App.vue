@@ -1,7 +1,7 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <nav class="sticky-top">
+    <router-link to="/">Posts</router-link> |
+    <router-link to="/map">Map</router-link>
   </nav>
   <router-view/>
 </template>
@@ -11,20 +11,21 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background-color: rgb(187, 255, 218);
 }
 
 nav {
-  padding: 30px;
+  padding: 12px;
+  background-color: rgb(228, 227, 227);
+  text-align: center;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: rgb(90, 90, 90);
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #33ad76;
 }
 </style>
