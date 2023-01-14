@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import PostsView from '../views/PostsView.vue'
 
 const routes = [
@@ -15,7 +15,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.NODE_ENV),
+  history: createWebHashHistory(process.env.NODE_ENV),
   routes
 })
 
