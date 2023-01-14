@@ -3,7 +3,7 @@
     <div class="mx-2 search-post">Search post</div>
     <MyInput @enterValue="filterPosts"/>
   </div>
-  <div v-for="(post, index) in posts" :key="post" class="mx-5 my-2 px-3 py-2 posts">
+  <div v-for="(post, index) in posts" :key="post" class="px-3 py-2 posts">
     <p class="post-title">{{ post.title }}</p>
     <p>{{ post.body }}</p>
     <div class="d-inline-flex">
@@ -191,6 +191,7 @@ export default {
     color: rgb(209, 104, 17);
   }
   .posts {
+    margin: 10px 35px;
     border: 1px solid rgb(192, 190, 190);
   }
   .post-title {
@@ -210,5 +211,14 @@ export default {
 .current-number {
     color: rgb(209, 104, 17);
     font-weight: 1000;
+}
+@media (max-width: 575px) {
+  .posts {
+    margin: 10px 15px;
+    font-size: 15px;
+  }
+  .search-post {
+    font-size: 15px;
+  }
 }
 </style>
