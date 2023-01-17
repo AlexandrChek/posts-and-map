@@ -11,11 +11,14 @@
       }
     },
     mounted() {
-      this.map = L.map('map').setView([48.20, 30.63], 6)
+      this.map = L.map('map', { zoomControl:false }).setView([48.20, 30.63], 6)
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(this.map)
+
+      this.widthControl()
+      window.onresize = () => {this.widthControl()}
 
       if (localStorage.getItem("oldMarkers")) {
         let markers = JSON.parse(localStorage.getItem("oldMarkers"))
@@ -52,6 +55,13 @@
             localStorage.setItem("oldMarkers", JSON.stringify(markers))
           }
         })
+      },
+      widthControl() {
+        if (window.innerWidth < 768) {
+          this.map.boxZoom.disable()
+        } else {
+          L.control.zoom({position: 'bottomright'}).addTo(this.map)
+        }
       }
     }
   }
