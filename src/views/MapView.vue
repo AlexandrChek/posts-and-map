@@ -17,8 +17,9 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(this.map)
 
-      this.widthControl()
-      window.onresize = () => {this.widthControl()}
+      if (window.innerWidth >= 768) {
+        L.control.zoom({position: 'bottomright'}).addTo(this.map)
+      }
 
       if (localStorage.getItem("oldMarkers")) {
         let markers = JSON.parse(localStorage.getItem("oldMarkers"))
@@ -55,13 +56,6 @@
             localStorage.setItem("oldMarkers", JSON.stringify(markers))
           }
         })
-      },
-      widthControl() {
-        if (window.innerWidth < 768) {
-          this.map.boxZoom.disable()
-        } else {
-          L.control.zoom({position: 'bottomright'}).addTo(this.map)
-        }
       }
     }
   }
