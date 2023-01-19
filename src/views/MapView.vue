@@ -38,11 +38,9 @@ import ModalRemover from '../components/ModalRemover.vue'
         }
         markers.forEach(el => {
           let coord = {lat: el.lat, lng: el.lng}
-          let marker = L.marker(coord).addTo(this.map)
+          let marker = L.marker(coord, {contextmenu: false}).addTo(this.map)
           marker.bindTooltip(el.tooltip)
           marker.on('contextmenu', this.getModalRemover)
-          marker.on('tapHold', this.getModalRemover)
-          
         })
       }
 
