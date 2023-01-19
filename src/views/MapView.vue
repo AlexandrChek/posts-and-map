@@ -1,13 +1,19 @@
 <template>
   <div id="map"></div>
+  <ModalRemover v-if="isModalRemover" :toDel="toDel" @closeRemover="closeModal"></ModalRemover>
 </template>
 
 <script>
+import ModalRemover from '../components/ModalRemover.vue'
+
   export default {
     name: 'MapView',
+    components: {ModalRemover},
     data() {
       return {
-        map: []
+        map: [],
+        isModalRemover: false,
+        toDel: {}
       }
     },
     mounted() {
@@ -23,10 +29,20 @@
 
       if (localStorage.getItem("oldMarkers")) {
         let markers = JSON.parse(localStorage.getItem("oldMarkers"))
+        if (JSON.parse(sessionStorage.getItem("toDel"))) {
+          let toDel = JSON.parse(sessionStorage.getItem("toDel"))
+          markers = markers.filter(el => {
+            return el.lat !== toDel.lat && el.lng !== toDel.lng
+          })
+          localStorage.setItem("oldMarkers", JSON.stringify(markers))
+        }
+        console.log(markers)
         markers.forEach(el => {
           let coord = {lat: el.lat, lng: el.lng}
           let marker = L.marker(coord).addTo(this.map)
-          marker.bindTooltip(el.tooltip).openTooltip()
+          marker.bindTooltip(el.tooltip)
+          marker.on('contextmenu', this.getModalRemover)
+          
         })
       }
 
@@ -43,7 +59,7 @@
         marker.bindPopup(popup)
         marker.on('popupclose', function() {
           let toolTipText = localStorage.getItem('tooltip')
-          marker.bindTooltip(toolTipText).openTooltip()
+          marker.bindTooltip(toolTipText)
           let coordAndTitle = e.latlng
           coordAndTitle.tooltip = toolTipText
           if (localStorage.getItem("oldMarkers")) {
@@ -56,6 +72,13 @@
             localStorage.setItem("oldMarkers", JSON.stringify(markers))
           }
         })
+      },
+      getModalRemover(e) {
+        this.isModalRemover = true
+        this.toDel = e.latlng
+      },
+      closeModal() {
+        this.isModalRemover = false
       }
     }
   }
