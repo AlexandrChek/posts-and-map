@@ -36,12 +36,12 @@ import ModalRemover from '../components/ModalRemover.vue'
           })
           localStorage.setItem("oldMarkers", JSON.stringify(markers))
         }
-        console.log(markers)
         markers.forEach(el => {
           let coord = {lat: el.lat, lng: el.lng}
           let marker = L.marker(coord).addTo(this.map)
           marker.bindTooltip(el.tooltip)
           marker.on('contextmenu', this.getModalRemover)
+          marker.on('tapHold', this.getModalRemover)
           
         })
       }

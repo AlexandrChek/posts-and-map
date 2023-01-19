@@ -21,7 +21,7 @@ nav {
 }
 
 nav a {
-  font-weight: bold;
+  font-weight: 1000;
   color: rgb(90, 90, 90);
 }
 
