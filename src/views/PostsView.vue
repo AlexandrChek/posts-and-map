@@ -172,9 +172,10 @@ export default {
       this.forChart = []
       for (let i = 0; i < this.comments.length; i++) {
         if (this.comments[i].postId === post.id) {
-          this.forChart.push(this.comments[i].email.length)
+          this.forChart.push(this.comments[i].body.length)
         }
       }
+      console.log(this.forChart)
       this.chartIndex = index
     },
     closeChart() {
