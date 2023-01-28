@@ -13,12 +13,13 @@
     </div>
     <StatChart v-if="index === chartIndex" :data="forChart"></StatChart>
   </div>
+  <UpBtn v-if="upBtn" @click="goTop"/>
   <div v-if="isPagination" class="text-center p-5">
     <div class="d-inline-flex justify-content-center">
       <SimplArrowBtn v-if="currentPage > 1" @click="scrollLeft">&ensp; &#171; &ensp;</SimplArrowBtn>
       <PageNumbers v-for="n in pages" :key="n" @click="changePage(n)">
         <div>
-          <div v-if="n === currentPage" id="arrow-up">&#9650;</div>
+          <div v-if="n === currentPage" id="page-pointer">&#9650;</div>
           <div v-else id="void">A</div>
         </div>
         <div :class="{'current-number': n === currentPage}">{{n}}</div>
@@ -35,6 +36,7 @@ import MyButton from '../components/MyButton.vue'
 import StatChart from '../components/StatChart.vue'
 import SimplArrowBtn from '../components/SimplArrowBtn.vue'
 import PageNumbers from '../components/PageNumbers.vue'
+import UpBtn from '../components/UpBtn.vue'
 
 export default {
   name: 'PostsView',
@@ -43,7 +45,8 @@ export default {
     MyButton,
     SimplArrowBtn,
     PageNumbers,
-    StatChart
+    StatChart,
+    UpBtn
   },
   data () {
     return {
@@ -60,7 +63,8 @@ export default {
       lastPage: 5,
       currentPage: 1,
       forChart: [],
-      chartIndex: null
+      chartIndex: null,
+      upBtn: false
     }
   },
   mounted() {
@@ -87,6 +91,14 @@ export default {
       }
       this.pagination()
     })
+
+    window.onscroll = () => {
+      if (document.documentElement.scrollTop > 20) {
+        this.upBtn = true
+      } else {
+        this.upBtn = false
+      }
+    }
   },
   methods: {
     pagination() {
@@ -175,12 +187,14 @@ export default {
           this.forChart.push(this.comments[i].body.length)
         }
       }
-      console.log(this.forChart)
       this.chartIndex = index
     },
     closeChart() {
       this.chartIndex = null
       this.forChart = []
+    },
+    goTop() {
+      document.documentElement.scrollTop = 0
     }
   }
 }
@@ -203,23 +217,23 @@ export default {
     font-weight: bold;
     color: red;
   }
-  #arrow-up {
+  #page-pointer {
     color: rgb(209, 104, 17);
   }
   #void {
     color: rgb(187, 255, 218);
   }
-.current-number {
+  .current-number {
     color: rgb(209, 104, 17);
     font-weight: 1000;
-}
-@media (max-width: 575px) {
-  .posts {
-    margin: 10px 15px;
-    font-size: 15px;
   }
-  .search-post {
-    font-size: 15px;
+  @media (max-width: 575px) {
+    .posts {
+      margin: 10px 15px;
+      font-size: 15px;
+    }
+    .search-post {
+      font-size: 15px;
+    }
   }
-}
 </style>
