@@ -92,13 +92,8 @@ export default {
       this.pagination()
     })
 
-    window.onscroll = () => {
-      if (document.documentElement.scrollTop > 20) {
-        this.upBtn = true
-      } else {
-        this.upBtn = false
-      }
-    }
+    window.onscroll = () => {this.setUpBtn()}
+    window.ontouchmove = () => {this.setUpBtn()}
   },
   methods: {
     pagination() {
@@ -192,6 +187,13 @@ export default {
     closeChart() {
       this.chartIndex = null
       this.forChart = []
+    },
+    setUpBtn() {
+      if (document.documentElement.scrollTop > 20) {
+        this.upBtn = true
+      } else {
+        this.upBtn = false
+      }
     },
     goTop() {
       document.documentElement.scrollTop = 0
