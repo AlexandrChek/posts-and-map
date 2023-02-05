@@ -1,6 +1,10 @@
-# postsviewer
+# ![PM](/dist/favicon.png) Posts & Map
 
-## Project setup
+## **It is a responsive and fully adaptive single page application based on vue-cli 3 + Chart.js + Leaflet.js + Bootstrap + SCSS.**
+---
+<br/>
+
+### Project setup
 ```
 npm install
 ```
