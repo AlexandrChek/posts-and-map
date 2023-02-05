@@ -23,7 +23,7 @@ export default {
                     labels,
                     datasets: [
                         {
-                            label: "Email's lengths",
+                            label: "Post lengths",
                             data: this.data,
                             borderColor: 'red',
                             backgroundColor: 'orange',
@@ -60,22 +60,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 div {
     width: 40%;
-}
-@media (max-width: 1199px) {
-    div {
+    @media (max-width: 1199px) {
         width: 50%;
     }
-}
-@media (max-width: 767px) {
-    div {
+    @media (max-width: 767px) {
         width: 70%;
     }
-}
-@media (max-width: 575px) {
-    div {
+    @media (max-width: 575px) {
         width: 100%;
     }
 }

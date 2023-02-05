@@ -23,16 +23,20 @@ export default {
 }
 </script>
 
-<style scoped>
-input:focus {
+<style scoped lang="scss">
+@import '../assets/_variables.scss';
+
+input {
     border: none;
-    outline: 3px solid #1dda2c;
-    background-color: beige;
-}
-@media (max-width: 575px) {
-    input {
+    outline: .5px solid $orange;
+    &:focus {
+        border: none;
+        outline: 3px solid $salat;
+        background-color: beige;
+    }
+    @media (max-width: 575px) {
         font-size: 19px;
-        width: 50%
+        width: 50%; 
     }
 }
 </style>

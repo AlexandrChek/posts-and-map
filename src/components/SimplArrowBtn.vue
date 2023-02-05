@@ -12,31 +12,27 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '../assets/_variables.scss';
+
 p {
     height: 58%;
     margin: 50% 0 10px;
-    border: 1px solid rgb(209, 104, 17);
+    border: 1px solid $orange;
     font-size: x-large;
     cursor: pointer;
-}
-p:hover {
-    color: #1dda2c;
-    background-color: rgb(212, 253, 231);
-    border: 2px solid #1dda2c;
-}
-@media (max-width: 991px) {
-    p {
-        font-size: large; 
+    &:hover {
+        color: $salat;
+        background-color: rgb(212, 253, 231);
+        border: 2px solid $salat;
     }
-}
-@media (max-width: 767px) {
-    p {
-        font-size: 3.25vw; 
+    @media (max-width: 991px) {
+        font-size: large;
     }
-}
-@media (max-width: 575px) {
-    p {
+    @media (max-width: 767px) {
+        font-size: 3.25vw;
+    }
+    @media (max-width: 575px) {
         font-size: 4.5vw;
     }
 }

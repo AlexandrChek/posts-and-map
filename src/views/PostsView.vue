@@ -30,7 +30,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import MyInput from '../components/MyInput.vue'
 import MyButton from '../components/MyButton.vue'
 import StatChart from '../components/StatChart.vue'
@@ -202,32 +201,23 @@ export default {
 }
 </script>
 
-<style scoped>
-  .search-post {
+<style scoped lang="scss">
+@import '../assets/_variables.scss';
+
+  .search-post, .post-title, .current-number, #page-pointer {
     font-weight: 1000;
-    color: rgb(209, 104, 17);
+    color: $orange;
   }
   .posts {
     margin: 10px 35px;
     border: 1px solid rgb(192, 190, 190);
   }
-  .post-title {
-    font-weight: 1000;
-    color: rgb(209, 104, 17);
-  }
   span {
     font-weight: bold;
     color: red;
   }
-  #page-pointer {
-    color: rgb(209, 104, 17);
-  }
   #void {
     color: rgb(187, 255, 218);
-  }
-  .current-number {
-    color: rgb(209, 104, 17);
-    font-weight: 1000;
   }
   @media (max-width: 575px) {
     .posts {
