@@ -26,7 +26,7 @@ export default {
                             label: "Post lengths",
                             data: this.data,
                             borderColor: 'red',
-                            backgroundColor: 'orange',
+                            backgroundColor: 'violet',
                             borderWidth: 4,
                             cubicInterpolationMode: 'monotone'
                         }

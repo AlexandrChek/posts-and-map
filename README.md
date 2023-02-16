@@ -1,6 +1,6 @@
 # ![PM](/dist/favicon.png) Posts & Map
 
-## **It is a responsive and fully adaptive single page application based on vue-cli 3 + Chart.js + Leaflet.js + Bootstrap + SCSS.**
+## **It is a responsive and fully adaptive single page application based on vue-cli 3 + Chart.js + Leaflet.js + Bootstrap.**
 ---
 <br/>
 

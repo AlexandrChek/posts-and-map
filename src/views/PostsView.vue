@@ -20,7 +20,7 @@
       <PageNumbers v-for="n in pages" :key="n" @click="changePage(n)">
         <div>
           <div v-if="n === currentPage" id="page-pointer">&#9650;</div>
-          <div v-else id="void">A</div>
+          <div v-else id="void">.</div>
         </div>
         <div :class="{'current-number': n === currentPage}">{{n}}</div>
       </PageNumbers>
@@ -202,22 +202,28 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/_variables.scss';
+  @import '../assets/_variables.scss';
 
-  .search-post, .post-title, .current-number, #page-pointer {
+  .search-post, .current-number, #page-pointer {
     font-weight: 1000;
     color: $orange;
   }
   .posts {
     margin: 10px 35px;
     border: 1px solid rgb(192, 190, 190);
+    border-radius: 9px;
+    background: radial-gradient(rgb(245, 245, 81) 85%, red 100%);
+  }
+  .post-title {
+    font-weight: 1000;
+    color: rgb(22, 112, 22);
   }
   span {
     font-weight: bold;
     color: red;
   }
   #void {
-    color: rgb(187, 255, 218);
+    visibility: hidden;
   }
   @media (max-width: 575px) {
     .posts {

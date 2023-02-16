@@ -20,6 +20,7 @@ button {
     font-size: 1vw;
     letter-spacing: .07vw;
     word-spacing: .35vw;
+    border-color: $btn-shadow;
     box-shadow: inset 0px -1.5px 3px 3px $btn-shadow;
     &:hover {
         color: rgb(255, 253, 230);

@@ -22,15 +22,15 @@ button {
     border: none;
     background-color: white;
     color: #29885d;
-    opacity: .6;
+    opacity: .7;
     text-align: center;
     position: fixed;
     right: 35px;
     bottom: 5.5vh;
     &:hover {
-        opacity: .8;
+        opacity: .9;
         color: #20e941;
-        outline: 7px solid rgba(32, 233, 65, 0.2);
+        outline: 7px solid rgba(32, 233, 65, 0.5);
     }
     @media (max-width: 1199px) {
         @include dementions(5.5vw, 5.5vw, 5.5vw, 2vw);

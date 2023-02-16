@@ -11,7 +11,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(187, 255, 218);
+  background: linear-gradient(to right, rgb(81, 250, 194), rgb(187, 255, 218));
 }
 
 nav {
